@@ -41,7 +41,7 @@ public class SqueakService {
             throw new SqueakerNotFoundException(String.format("Squeaker not found for username %s", username));
         }
 
-        return squeakRepository.findAllBySqueaker(maybeSqueaker.get());
+        return squeakRepository.findAllBySqueakerOrderById(maybeSqueaker.get());
     }
 
     public Squeak saveSqueak(Squeak squeak) {

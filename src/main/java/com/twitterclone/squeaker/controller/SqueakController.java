@@ -1,5 +1,6 @@
 package com.twitterclone.squeaker.controller;
 
+import com.twitterclone.squeaker.exception.SqueakerNotFoundException;
 import com.twitterclone.squeaker.repository.entity.Squeak;
 import com.twitterclone.squeaker.service.SqueakService;
 import lombok.AllArgsConstructor;
@@ -23,8 +24,12 @@ public class SqueakController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<List<Squeak>> findById(@PathVariable String username) {
-        return new ResponseEntity<>(squeakService.findSqueaksByUsername(username), HttpStatus.OK);
+    public ResponseEntity<Object> findByUsername(@PathVariable String username) {
+        try{
+            return new ResponseEntity<>(squeakService.findSqueaksByUsername(username), HttpStatus.OK);
+        } catch (SqueakerNotFoundException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping

@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface SqueakRepository extends JpaRepository<Squeak, Long> {
-    List<Squeak> findAllBySqueaker(Squeaker squeaker);
+    List<Squeak> findAllBySqueakerOrderById(Squeaker squeaker);
 }
