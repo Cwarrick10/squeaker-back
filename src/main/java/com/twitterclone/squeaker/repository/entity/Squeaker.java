@@ -1,7 +1,6 @@
 package com.twitterclone.squeaker.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,7 +19,6 @@ public class Squeaker {
     @Column(name = "password")
     String password;
     @OneToMany(mappedBy = "squeaker")
-//    @JsonIgnoreProperties(value = {"squeaks"})
     @JsonIgnore
     Set<Squeak> squeaks;
 }

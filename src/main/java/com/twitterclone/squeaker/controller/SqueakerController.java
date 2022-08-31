@@ -30,7 +30,7 @@ public class SqueakerController {
     }
 
     @GetMapping()
-    public ResponseEntity<Object> findByUsername(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<Object> findByUsername(@RequestParam("username") String username, @RequestParam("password") String password) {
         try {
             return new ResponseEntity<>(squeakerService.findSqueakerByUsername(username, password), HttpStatus.OK);
         } catch (SqueakerNotFoundException ex) {
@@ -43,5 +43,10 @@ public class SqueakerController {
     @PostMapping
     public ResponseEntity<Squeaker> save(@RequestBody Squeaker squeaker) {
         return new ResponseEntity<>(squeakerService.saveSqueaker(squeaker), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Squeaker> update(@PathVariable Long id, @RequestBody Squeaker squeaker) {
+        return new ResponseEntity<>(squeakerService.updateSqueaker(id, squeaker), HttpStatus.OK);
     }
 }

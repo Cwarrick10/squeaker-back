@@ -49,4 +49,16 @@ public class SqueakerService {
     public Squeaker saveSqueaker(Squeaker squeaker) {
         return squeakerRepository.save(squeaker);
     }
+
+
+    public Squeaker updateSqueaker (Long id, Squeaker squeaker) {
+        Squeaker oldSqueaker = findSqueakerById(id);
+
+        oldSqueaker.setUsername(squeaker.getUsername());
+        oldSqueaker.setPassword(squeaker.getPassword());
+
+        squeakerRepository.save(oldSqueaker);
+
+        return oldSqueaker;
+    }
 }
