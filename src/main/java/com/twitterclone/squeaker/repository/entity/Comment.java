@@ -3,6 +3,7 @@ package com.twitterclone.squeaker.repository.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -16,6 +17,12 @@ public class Comment {
     @Column(name = "content")
     String content;
 
+    @Column(name = "postedAt")
+    LocalDateTime postedAt;
+
     @ManyToOne
     Squeak squeak;
+
+    @ManyToOne
+    Squeaker author;
 }

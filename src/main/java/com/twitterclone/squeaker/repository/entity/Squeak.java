@@ -3,6 +3,8 @@ package com.twitterclone.squeaker.repository.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -12,8 +14,15 @@ public class Squeak {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
+
+    @Column(name = "postedAt")
+    LocalDateTime postedAt;
+
     @Column(name = "content")
     String content;
+
     @ManyToOne
     Squeaker squeaker;
+    @OneToMany
+    Set<Comment> comments;
 }

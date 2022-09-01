@@ -21,4 +21,5 @@ public class Squeaker {
     @OneToMany(mappedBy = "squeaker")
     @JsonIgnore
     Set<Squeak> squeaks;
+    //need to input OneToMany for comments
 }
