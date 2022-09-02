@@ -19,10 +19,12 @@ public class FollowService {
     private FollowRepository followRepository;
     private SqueakerRepository squeakerRepository;
 
-    public void addFollow(Long squeakerId){
+    public void addFollow(Long currentSqueakerId, Long profileSqueakerId){
         Follow follow = new Follow();
-        Squeaker followed = squeakerRepository.getReferenceById(squeakerId);
-        follow.setFollowed(followed);
+        Squeaker follower = squeakerRepository.getReferenceById(currentSqueakerId);
+        Squeaker followed = squeakerRepository.getReferenceById(profileSqueakerId);
+        follow.setUserFollowed(followed);
+        follow.setUserFollower(follower);
         followRepository.save(follow);
     }
 }

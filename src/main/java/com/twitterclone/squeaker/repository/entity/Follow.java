@@ -12,6 +12,10 @@ public class Follow {
     Long id;
 
     @ManyToOne
-    @JoinColumn(name = "follower")
-    Squeaker followed;
+    @JoinColumn(name = "userFollowed")
+    Squeaker userFollowed;
+
+    @ManyToOne
+    @JoinColumn(name = "userFollower")
+    Squeaker userFollower;
 }

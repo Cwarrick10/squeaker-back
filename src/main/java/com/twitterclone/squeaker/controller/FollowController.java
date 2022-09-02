@@ -17,8 +17,8 @@ public class FollowController {
     private ApiResponse apiResponse;
 
     @PostMapping("/follow")
-    public ResponseEntity<Object> follow(@RequestBody Long squeakerId){
-        followService.addFollow(squeakerId);
+    public ResponseEntity<Object> follow(@RequestParam Long currentSqueakerId, @RequestParam Long profileSqueakerId){
+        followService.addFollow(currentSqueakerId, profileSqueakerId);
 
         return new ResponseEntity(apiResponse.getBodyResponse(), HttpStatus.OK);
     }
