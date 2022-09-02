@@ -4,25 +4,25 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "squeak")
-public class Squeak {
+@Table(name = "comment")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
 
-    @Column(name = "postedAt")
-    LocalDateTime postedAt;
-
     @Column(name = "content")
     String content;
 
+    @Column(name = "postedAt")
+    LocalDateTime postedAt;
+
     @ManyToOne
-    Squeaker squeaker;
-    @OneToMany(mappedBy = "squeak")
-    Set<Comment> comments;
+    Squeak squeak;
+
+    @ManyToOne
+    Squeaker author;
 }
