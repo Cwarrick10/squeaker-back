@@ -27,24 +27,11 @@ public class CommentService {
     }
 
     public List<Comment> findCommentsBySqueak(Long id) {
-        Optional<Squeak> squeak = squeakRepository.findById(id);
+        Squeak squeak = squeakRepository.findSqueakById(id);
         return commentRepository.findAllBySqueakOrderById(squeak);
     }
 
     public Comment saveComment(Comment comment) {
         return commentRepository.save(comment);
-    }
-
-    public void addComment(String content) {
-        Comment comment = new Comment();
-        comment.setContent(content);
-        comment.setPostedAt(LocalDateTime.now());
-        commentRepository.saveAndFlush(comment);
-
-//        Squeak squeak = squeakRepository.getReferenceById(id);
-//        squeak.getComments().add(comment);
-//        squeakRepository.flush();
-//        Squeaker author = squeakerRepository.findSqueakerByUsername()
-//        comment.setAuthor(author);
     }
 }

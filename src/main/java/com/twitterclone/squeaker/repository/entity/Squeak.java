@@ -23,6 +23,6 @@ public class Squeak {
 
     @ManyToOne
     Squeaker squeaker;
-    @OneToMany
+    @OneToMany(mappedBy = "squeak")
     Set<Comment> comments;
 }
