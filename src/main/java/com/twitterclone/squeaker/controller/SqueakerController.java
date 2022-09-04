@@ -49,4 +49,13 @@ public class SqueakerController {
     public ResponseEntity<Squeaker> update(@PathVariable Long id, @RequestBody Squeaker squeaker) {
         return new ResponseEntity<>(squeakerService.updateSqueaker(id, squeaker), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{username}")
+    private ResponseEntity<Object> deleteSqueaker(@PathVariable("username") String username, @PathVariable("password") String password) {
+        try {
+            return new ResponseEntity<>(squeakerService.deleteSqueaker(username, password), HttpStatus.NO_CONTENT);
+        } catch (IllegalArgumentException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 }
