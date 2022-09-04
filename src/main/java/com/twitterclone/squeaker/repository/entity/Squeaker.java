@@ -21,4 +21,10 @@ public class Squeaker {
     @OneToMany(mappedBy = "squeaker")
     @JsonIgnore
     Set<Squeak> squeaks;
+    @Column(name = "first_name")
+    String firstName;
+    @Column(name = "last_name")
+    String lastName;
+    @Column(name = "profile_pic")
+    String profileImg;
 }
