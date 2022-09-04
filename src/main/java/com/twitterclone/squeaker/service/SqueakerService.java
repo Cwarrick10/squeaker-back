@@ -61,4 +61,10 @@ public class SqueakerService {
 
         return oldSqueaker;
     }
+
+    public Boolean deleteSqueaker(String username, String password) {
+        Squeaker squeakerToDelete = findSqueakerByUsername(username, password);
+        squeakerRepository.delete(squeakerToDelete);
+        return Boolean.TRUE;
+    }
 }
