@@ -14,7 +14,7 @@ public class Squeaker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     String username;
     @Column(name = "password")
     String password;
