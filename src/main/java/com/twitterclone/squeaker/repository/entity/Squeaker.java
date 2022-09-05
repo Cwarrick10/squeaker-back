@@ -22,11 +22,11 @@ public class Squeaker {
     @JsonIgnore
     Set<Squeak> squeaks;
     @Column(name = "first_name")
-    String firstName;
+    String first_name;
     @Column(name = "last_name")
-    String lastName;
+    String last_name;
     @Column(name = "profile_pic")
-    String profileImg;
+    String profile_pic;
     @Column(name = "email", unique = true)
     String email;
 }
