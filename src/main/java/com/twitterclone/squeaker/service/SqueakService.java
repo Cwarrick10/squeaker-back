@@ -21,7 +21,7 @@ public class SqueakService {
 
 
     public List<Squeak> findAllSqueaks() {
-        return squeakRepository.findAll();
+        return squeakRepository.findAllByOrderByIdDesc();
     }
 
     public Squeak findSqueakById(Long id) {

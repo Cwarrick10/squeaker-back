@@ -12,4 +12,5 @@ public interface SqueakRepository extends JpaRepository<Squeak, Long> {
     List<Squeak> findAllBySqueakerOrderById(Squeaker squeaker);
 
     Squeak findSqueakById(Long id);
+    List<Squeak> findAllByOrderByIdDesc();
 }
