@@ -26,7 +26,7 @@ public class Squeaker {
     @Column(name = "last_name")
     String lastName;
     @Column(name = "profile_pic")
-    String profileImg;
+    String profilePic;
     @Column(name = "email", unique = true)
     String email;
 }
