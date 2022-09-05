@@ -14,11 +14,19 @@ public class Squeaker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     String username;
     @Column(name = "password")
     String password;
     @OneToMany(mappedBy = "squeaker")
     @JsonIgnore
     Set<Squeak> squeaks;
+    @Column(name = "first_name")
+    String firstName;
+    @Column(name = "last_name")
+    String lastName;
+    @Column(name = "profile_pic")
+    String profilePic;
+    @Column(name = "email", unique = true)
+    String email;
 }
