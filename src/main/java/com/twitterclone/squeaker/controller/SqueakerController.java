@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -42,6 +43,7 @@ public class SqueakerController {
 
     @PostMapping
     public ResponseEntity<Squeaker> save(@RequestBody Squeaker squeaker) {
+        squeaker.setJoinDate(LocalDate.now());
         return new ResponseEntity<>(squeakerService.saveSqueaker(squeaker), HttpStatus.OK);
     }
 
