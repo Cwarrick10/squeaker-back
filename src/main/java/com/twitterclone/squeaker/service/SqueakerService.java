@@ -56,6 +56,10 @@ public class SqueakerService {
 
         oldSqueaker.setUsername(squeaker.getUsername());
         oldSqueaker.setPassword(squeaker.getPassword());
+        oldSqueaker.setEmail(squeaker.getEmail());
+        oldSqueaker.setFirstName(squeaker.getFirstName());
+        oldSqueaker.setLastName(squeaker.getLastName());
+        oldSqueaker.setProfilePic(squeaker.getProfilePic());
 
         squeakerRepository.save(oldSqueaker);
 
