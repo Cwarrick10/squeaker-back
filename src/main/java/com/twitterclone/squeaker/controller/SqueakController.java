@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -35,7 +37,12 @@ public class SqueakController {
 
     @PostMapping
     public ResponseEntity<Squeak> save(@RequestBody Squeak squeak) {
-        squeak.setPostedAt(LocalDateTime.now());
+//        squeak.setPostedAt(LocalDateTime.now());
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String text = date.format(myFormatObj).replace("T"," ");
+        LocalDateTime parsedDate = LocalDateTime.parse(text, myFormatObj);
+        squeak.setPostedAt(parsedDate);
         return new ResponseEntity<>(squeakService.saveSqueak(squeak), HttpStatus.OK);
     }
 

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -29,4 +31,6 @@ public class Squeaker {
     String profilePic;
     @Column(name = "email", unique = true)
     String email;
+    @Column(name = "joinDate")
+    LocalDate joinDate;
 }
