@@ -27,6 +27,9 @@ public class Squeak {
     @Column(name = "content")
     String content;
 
+    @Column(name = "image")
+    String image;
+
     @ManyToOne
     Squeaker squeaker;
     @OneToMany(mappedBy = "squeak")
