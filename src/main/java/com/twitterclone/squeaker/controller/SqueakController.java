@@ -4,14 +4,14 @@ import com.twitterclone.squeaker.exception.SqueakerNotFoundException;
 import com.twitterclone.squeaker.repository.entity.Squeak;
 import com.twitterclone.squeaker.service.SqueakService;
 import lombok.AllArgsConstructor;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -37,12 +37,12 @@ public class SqueakController {
 
     @PostMapping
     public ResponseEntity<Squeak> save(@RequestBody Squeak squeak) {
-//        squeak.setPostedAt(LocalDateTime.now());
-        LocalDateTime date = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String text = date.format(myFormatObj).replace("T"," ");
-        LocalDateTime parsedDate = LocalDateTime.parse(text, myFormatObj);
-        squeak.setPostedAt(parsedDate);
+        ZoneId zoneid1 = ZoneId.of("America/New_York");
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now(zoneid1);
+        squeak.setPostedAtTime(time);
+        squeak.setPostedAtDate(date);
+
         return new ResponseEntity<>(squeakService.saveSqueak(squeak), HttpStatus.OK);
     }
 

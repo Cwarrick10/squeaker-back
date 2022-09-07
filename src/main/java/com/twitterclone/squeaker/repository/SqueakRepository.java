@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface SqueakRepository extends JpaRepository<Squeak, Long> {
-    List<Squeak> findAllBySqueakerOrderById(Squeaker squeaker);
+    List<Squeak> findAllBySqueakerOrderByIdDesc(Optional<Squeaker> squeaker);
 
     Squeak findSqueakById(Long id);
     List<Squeak> findAllByOrderByIdDesc();

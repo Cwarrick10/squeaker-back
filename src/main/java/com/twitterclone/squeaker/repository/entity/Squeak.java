@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
@@ -17,8 +18,11 @@ public class Squeak {
     @Column(name = "id")
     Long id;
 
-    @Column(name = "postedAt")
-    LocalDateTime postedAt;
+    @Column(name = "postedAtDate")
+    LocalDate postedAtDate;
+
+    @Column(name = "postedAtTime")
+    LocalTime postedAtTime;
 
     @Column(name = "content")
     String content;
