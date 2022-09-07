@@ -47,8 +47,9 @@ public class SqueakerController {
         return new ResponseEntity<>(squeakerService.saveSqueaker(squeaker), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/edit/{id}")
     public ResponseEntity<Squeaker> update(@PathVariable Long id, @RequestBody Squeaker squeaker) {
+        System.out.println(squeaker);
         return new ResponseEntity<>(squeakerService.updateSqueaker(id, squeaker), HttpStatus.OK);
     }
 
